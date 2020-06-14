@@ -115,8 +115,8 @@ public class MySqlService implements CrudRepository<Message, String> {
 
 		connection();
 		String host = "jdbc:mysql://localhost:3306/afekadb?autoReconnect=true&useSSL=false";
-		String username = "root";
-		String password = "Naor12amir+";
+		String username = "username";
+		String password = "password";
 
 		try {
 			connect = (Connection) DriverManager.getConnection(host, username, password);
