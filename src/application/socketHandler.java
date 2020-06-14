@@ -33,44 +33,29 @@ public class socketHandler extends Thread {
 	}
 
 	public void run() {
-		String clientSentence;
-		String capitalizedSentence;
-		int sum = 0;
-		double result = 0;
-
 		try {
 			String str;
 			while (true) {
 				str = inFromClient.readLine();
 				if(str != null) {
 					if(str.equals("CLOSE")) {
-						System.out.println("INSIDE CLOSE");
 						incoming.close();
 						this.interrupt();
-						//Thread.interrupted();
 						break;
 					}
-					/*
-					 * System.err.println("str is null!"); Thread.interrupted(); break;
-					 */
-					System.out.println("we are in the server " + str);
-					
+
+					System.out.println("We are in the server " + str);
+				
 					mySqlService.create(new Message(str.toUpperCase()));
 					sqlLiteService.create(new Message(str.toUpperCase()));
 					mongoService.create(new Message(str.toUpperCase()));
+					
 					outToClient.writeBytes(str.toUpperCase() + "\n");
-					//outToClient.flush();
 				}
 			}
 
 		} catch (IOException e) {
 			e.getMessage();
 		}
-		/*
-		 * try { System.out.println("before close"); incoming.close();
-		 * System.out.println("before interrupt"); this.interrupt();
-		 * System.out.println("after interrupt"); } catch (IOException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 */
 	}
 }

@@ -14,7 +14,7 @@ import data.LastIdValue;
 
 public class LastIdValueDao implements LastIdSave<LastIdValue, Long> {
 
-	private final String CON = "mongodb://nfjk:nfjk1234@cluster0-shard-00-00-6amt4.mongodb.net:27017,cluster0-shard-00-01-6amt4.mongodb.net:27017,cluster0-shard-00-02-6amt4.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority&j=true&wtimeout=1000";
+	private final String CON = "mongodb://nfjk:nfjk1234@cluster0-shard-00-00-6amt4.mongodb.net:27017,cluster0-shard-00-01-6amt4.mongodb.net:27017,cluster0-shard-00-02-6amt4.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority&journal=true&wtimeoutms=1000";
 	private MongoClientURI mongoClientURI;
 	private MongoClient mongoClient;
 	private MongoDatabase database;

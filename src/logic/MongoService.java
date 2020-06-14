@@ -19,7 +19,7 @@ import data.Message;
 
 public class MongoService implements CrudRepository<Message, String> {
 
-	private final String CON = "mongodb://nfjk:nfjk1234@cluster0-shard-00-00-6amt4.mongodb.net:27017,cluster0-shard-00-01-6amt4.mongodb.net:27017,cluster0-shard-00-02-6amt4.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority&j=true&wtimeout=1000";
+	private final String CON = "mongodb://nfjk:nfjk1234@cluster0-shard-00-00-6amt4.mongodb.net:27017,cluster0-shard-00-01-6amt4.mongodb.net:27017,cluster0-shard-00-02-6amt4.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority&journal=true&wtimeoutms=1000";
 	private MongoClientURI mongoClientURI;
 	private MongoClient mongoClient;
 	private MongoDatabase database;
@@ -30,6 +30,7 @@ public class MongoService implements CrudRepository<Message, String> {
 		mongoClientURI = new MongoClientURI(CON);
 		mongoClient = new MongoClient(mongoClientURI);
 		database = mongoClient.getDatabase("test");
+		System.out.println("Connection to MongoDB has been established.");
 		messageCollection = database.getCollection("myTable");
 		this.lastIdValueDao = lastIdValueDao;
 	}

@@ -84,22 +84,10 @@ public class MySqlService implements CrudRepository<Message, String> {
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	// Doesn't work
-	/*
-	 * @Override public void delete(String id) { String sql =
-	 * "DELETE FROM messages WHERE id = ?"; PreparedStatement pst; try { pst =
-	 * connect.prepareStatement(sql); pst.setString(1, id); pst.execute(sql); }
-	 * catch (SQLException e) { e.printStackTrace(); }
-	 * 
-	 * }
-	 */
-
-	
 	@Override
 	public void delete(String id) {
 		String sqldelete = "DELETE FROM messages where id = ?";
@@ -109,7 +97,7 @@ public class MySqlService implements CrudRepository<Message, String> {
 			pst.setString(1, id);
 			pst.execute();
 
-		} catch (SQLException e) { // TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
@@ -118,9 +106,7 @@ public class MySqlService implements CrudRepository<Message, String> {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			System.out.println("Works");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -128,15 +114,14 @@ public class MySqlService implements CrudRepository<Message, String> {
 	public static void ConectingToSQL() {
 
 		connection();
-		String host = "jdbc:mysql://localhost:3306/afekadb";
+		String host = "jdbc:mysql://localhost:3306/afekadb?autoReconnect=true&useSSL=false";
 		String username = "root";
 		String password = "Naor12amir+";
 
 		try {
 			connect = (Connection) DriverManager.getConnection(host, username, password);
-			System.out.println("work");
+			System.out.println("Connection to MySQL has been established.");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

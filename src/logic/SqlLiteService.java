@@ -83,7 +83,6 @@ public class SqlLiteService implements CrudRepository<Message, String> {
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -97,16 +96,15 @@ public class SqlLiteService implements CrudRepository<Message, String> {
 			pst.setString(1, id);
 			pst.execute();
 
-		} catch (SQLException e) { // TODO Auto-generated catch block
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 	}
 
 	public void connect() {
 		try {
-			// db parameters
+
 			String url = "jdbc:sqlite:C:/Users/Naor/Desktop/afekadb/afekadb.db";
-			// create a connection to the database
 			conn = DriverManager.getConnection(url);
 
 			System.out.println("Connection to SQLite has been established.");
